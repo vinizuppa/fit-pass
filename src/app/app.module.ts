@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AtividadeService } from '../services/domain/atividade.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
+import { StorageService } from '../services/storage.service';
 
 @NgModule({//Anotação que tem configurações para alterar a classe
   declarations: [
@@ -31,7 +32,8 @@ import { AuthService } from '../services/auth.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AtividadeService,
     ErrorInterceptorProvider,
-    AuthService
+    AuthService, 
+    StorageService
   ]
 })
 export class AppModule {}
