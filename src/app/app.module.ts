@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AtividadeService } from '../services/domain/atividade.service';
+import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 
 @NgModule({//Anotação que tem configurações para alterar a classe
   declarations: [
@@ -27,7 +28,8 @@ import { AtividadeService } from '../services/domain/atividade.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AtividadeService
+    AtividadeService,
+    ErrorInterceptorProvider
   ]
 })
 export class AppModule {}

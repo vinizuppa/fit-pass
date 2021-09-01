@@ -34,7 +34,7 @@ export class AtividadesPage {
       this.items = response;
     },
     error => {
-      console.log(error);
+      
     });
 
   }
