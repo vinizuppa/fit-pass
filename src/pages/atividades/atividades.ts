@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AtividadeService } from '../../services/domain/atividade.service';
 
 /**
  * Generated class for the AtividadesPage page.
@@ -15,11 +16,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AtividadesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public atividadeService: AtividadeService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AtividadesPage');
+  ionViewDidLoad() {//Evento que executa o que estiver dentro, assim que a página terminar de ser carregada
+    this.atividadeService.findAll().subscribe(response => {//Usamos arrow function
+      console.log(response);
+    },
+    error => {
+      console.log(error);
+    });
+
   }
 
 }
