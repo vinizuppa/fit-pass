@@ -12,6 +12,7 @@ import { AtividadeService } from '../services/domain/atividade.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
+import { AlunoService } from '../services/domain/aluno.service';
 
 @NgModule({//Anotação que tem configurações para alterar a classe
   declarations: [
@@ -33,7 +34,8 @@ import { StorageService } from '../services/storage.service';
     AtividadeService,
     ErrorInterceptorProvider,
     AuthService, 
-    StorageService
+    StorageService,
+    AlunoService
   ]
 })
 export class AppModule {}
