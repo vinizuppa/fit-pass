@@ -13,6 +13,7 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 import { AlunoService } from '../services/domain/aluno.service';
+import { AuthInterceptor, AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 
 @NgModule({//Anotação que tem configurações para alterar a classe
   declarations: [
@@ -32,6 +33,7 @@ import { AlunoService } from '../services/domain/aluno.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AtividadeService,
+    AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService, 
     StorageService,
