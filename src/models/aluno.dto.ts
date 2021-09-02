@@ -6,7 +6,9 @@ export interface AlunoDTO{
     sexo: string;
     peso: number;
     altura: number;
-    imc: number
+    imc: number;
+    data_nasc: string;
+    data_cad: string;
     imageUrl? : string;
 
 }

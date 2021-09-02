@@ -4,4 +4,12 @@ page-profile-aluno {
         border-radius: 100%;
         margin: 25px auto 0 auto;
     }
+
+    p{
+        float: left;
+        display: flex;
+        width: 90%;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
 }
