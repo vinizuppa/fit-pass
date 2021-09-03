@@ -14,6 +14,7 @@ import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 import { AlunoService } from '../services/domain/aluno.service';
 import { AuthInterceptor, AuthInterceptorProvider } from '../interceptors/auth-interceptor';
+import { UsuarioService } from '../services/domain/usuario.service';
 
 @NgModule({//Anotação que tem configurações para alterar a classe
   declarations: [
@@ -37,7 +38,8 @@ import { AuthInterceptor, AuthInterceptorProvider } from '../interceptors/auth-i
     ErrorInterceptorProvider,
     AuthService, 
     StorageService,
-    AlunoService
+    AlunoService,
+    UsuarioService
   ]
 })
 export class AppModule {}

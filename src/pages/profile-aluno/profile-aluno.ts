@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 import { AlunoDTO } from '../../models/aluno.dto';
+import { PerfilDTO } from '../../models/perfil.dto';
 import { AlunoService } from '../../services/domain/aluno.service';
+import { UsuarioService } from '../../services/domain/usuario.service';
 import { StorageService } from '../../services/storage.service';
 
 /**
@@ -20,16 +22,23 @@ import { StorageService } from '../../services/storage.service';
 export class ProfileAlunoPage {
 
   aluno: AlunoDTO;
+  perfil: PerfilDTO;
   
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: StorageService,
-    public alunoService: AlunoService) {
+    public alunoService: AlunoService,
+    public usuarioService: UsuarioService) {
   }
 
   ionViewDidLoad() {
     let localUser = this.storage.getLocalUser();
+
+    this.usuarioService.findPerfilByEmail(localUser.email).subscribe(response =>{
+      this.storage.setPerfilUser(response)
+    })
+    
     if(localUser && localUser.email){
       this.alunoService.findByEmail(localUser.email)
         .subscribe(response => {
