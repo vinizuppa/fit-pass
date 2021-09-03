@@ -25,7 +25,16 @@ export class StorageService{
         }
     }
 
-    
+    getPerfilUser() : PerfilDTO{
+        let usr = localStorage.getItem(STORAGE_KEYS.perfis);
+        if (usr == null){
+            return null;
+        }
+        else{
+            return JSON.parse(usr);
+        }
+    }
+
     setPerfilUser(obj: PerfilDTO){
         if(obj == null){
             localStorage.removeItem(STORAGE_KEYS.perfis);

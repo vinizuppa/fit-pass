@@ -23,7 +23,7 @@ export class ProfileAlunoPage {
 
   aluno: AlunoDTO;
   perfil: PerfilDTO;
-  
+  localPerfil: PerfilDTO;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -34,13 +34,36 @@ export class ProfileAlunoPage {
 
   ionViewDidLoad() {
     let localUser = this.storage.getLocalUser();
-
+    this.localPerfil = this.storage.getPerfilUser();
     this.usuarioService.findPerfilByEmail(localUser.email).subscribe(response =>{
       this.storage.setPerfilUser(response)
     })
     
     if(localUser && localUser.email){
-      this.alunoService.findByEmail(localUser.email)
+     this.findByEmail(localUser.email);
+    }
+    else{
+      this.navCtrl.setRoot('HomePage');
+    }
+  }
+
+  
+  getImageIfExists(){
+    for (let index = 0; index < this.localPerfil.perfis.length; index++) {
+      if(this.localPerfil.perfis[index] == "ALUNO"){
+        this.alunoService.getImageFromBucket(this.aluno.id)
+        .subscribe(response =>{
+          this.aluno.imageUrl = `${API_CONFIG.bucketBaseUrl}/al${this.aluno.id}.jpg`;
+        },
+        error =>{});
+      }
+    }
+  }
+    
+  findByEmail(email : string){
+    for (let index = 0; index < this.localPerfil.perfis.length; index++) {
+      if(this.localPerfil.perfis[index] == "ALUNO"){
+        this.alunoService.findByEmail(email)
         .subscribe(response => {
           this.aluno = response;
           this.getImageIfExists();
@@ -50,18 +73,20 @@ export class ProfileAlunoPage {
             this.navCtrl.setRoot('HomePage');
           }
         });
-    }
-    else{
-      this.navCtrl.setRoot('HomePage');
-    }
-  }
-
-  getImageIfExists(){
-    this.alunoService.getImageFromBucket(this.aluno.id)
-      .subscribe(response =>{
-        this.aluno.imageUrl = `${API_CONFIG.bucketBaseUrl}/al${this.aluno.id}.jpg`;
-      },
-      error =>{});
-  }
+      } 
+    /*  else if(this.localPerfil.perfis[index] == "INSTRUTOR"){
+        this.instrutorService.findByEmail(email)
+        .subscribe(response => {
+          this.instrutor = response;
+          this.getImageIfExists();
+        },
+        error =>{
+          if(error.status == 403){
+            this.navCtrl.setRoot('HomePage');
+          }
+        });
+      } */
+    }   
+  }  
 
 }
