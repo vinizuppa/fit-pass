@@ -15,6 +15,7 @@ import { StorageService } from '../services/storage.service';
 import { AlunoService } from '../services/domain/aluno.service';
 import { AuthInterceptor, AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { UsuarioService } from '../services/domain/usuario.service';
+import { InstrutorService } from '../services/domain/instrutor.service';
 
 @NgModule({//Anotação que tem configurações para alterar a classe
   declarations: [
@@ -39,6 +40,7 @@ import { UsuarioService } from '../services/domain/usuario.service';
     AuthService, 
     StorageService,
     AlunoService,
+    InstrutorService,
     UsuarioService
   ]
 })

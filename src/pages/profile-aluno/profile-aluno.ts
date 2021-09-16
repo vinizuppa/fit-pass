@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { PARAMETERS } from '@angular/core/src/util/decorators';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 import { AlunoDTO } from '../../models/aluno.dto';
+import { InstrutorDTO } from '../../models/instrutor.dto';
 import { PerfilDTO } from '../../models/perfil.dto';
 import { AlunoService } from '../../services/domain/aluno.service';
+import { InstrutorService } from '../../services/domain/instrutor.service';
 import { UsuarioService } from '../../services/domain/usuario.service';
 import { StorageService } from '../../services/storage.service';
 
@@ -22,13 +25,17 @@ import { StorageService } from '../../services/storage.service';
 export class ProfileAlunoPage {
 
   aluno: AlunoDTO;
+  instrutor: InstrutorDTO;
   perfil: PerfilDTO;
   localPerfil: PerfilDTO;
+  alunoA: boolean;
+  instrutorA: boolean;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: StorageService,
     public alunoService: AlunoService,
+    public instrutorService: InstrutorService,
     public usuarioService: UsuarioService) {
   }
 
@@ -57,6 +64,14 @@ export class ProfileAlunoPage {
         },
         error =>{});
       }
+
+      else if(this.localPerfil.perfis[index] == "INSTRUTOR"){
+        this.instrutorService.getImageFromBucket(this.instrutor.id)
+        .subscribe(response =>{
+          this.instrutor.imageUrl = `${API_CONFIG.bucketBaseUrl}/ins${this.instrutor.id}.jpg`
+        },
+        error =>{});
+      }
     }
   }
     
@@ -67,6 +82,8 @@ export class ProfileAlunoPage {
         .subscribe(response => {
           this.aluno = response;
           this.getImageIfExists();
+          this.alunoA = true;
+          this.instrutorA = false;
         },
         error =>{
           if(error.status == 403){
@@ -74,19 +91,22 @@ export class ProfileAlunoPage {
           }
         });
       } 
-    /*  else if(this.localPerfil.perfis[index] == "INSTRUTOR"){
+      else if(this.localPerfil.perfis[index] == "INSTRUTOR"){
         this.instrutorService.findByEmail(email)
         .subscribe(response => {
           this.instrutor = response;
           this.getImageIfExists();
+          this.alunoA = false;
+          this.instrutorA = true;
         },
         error =>{
           if(error.status == 403){
             this.navCtrl.setRoot('HomePage');
           }
         });
-      } */
+      } 
     }   
-  }  
+  } 
+  
 
 }

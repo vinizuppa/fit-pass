@@ -9,23 +9,37 @@
     <button ion-button menuToggle>
       <ion-icon name="list"></ion-icon>
     </button>
-    <ion-title>Profile</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-avatar>
-    <img class="circle" [src]="aluno?.imageUrl || 'assets/imgs/avatar-blank.png'">
+    <img class="circle" *ngIf="instrutorA" [src]="instrutor?.imageUrl || 'assets/imgs/avatar-blank.png'">
+    <img class="circle" *ngIf="alunoA" [src]="aluno?.imageUrl || 'assets/imgs/avatar-blank.png'">
   </ion-avatar>
-  <h2 text-center>{{aluno?.nome}}</h2>
+  <h2 text-center *ngIf="alunoA">{{aluno?.nome}}</h2>
+  <h2 text-center *ngIf="instrutorA">{{instrutor?.nome}}</h2>
+
   <ion-card>
-    <p text-center><strong>Email:</strong> {{aluno?.email}}</p>
-    <p text-center><strong>Data de Nascimento: </strong> {{aluno?.data_nasc}}</p>
-    <p text-center><strong>Data de cadastro: </strong>{{aluno?.data_cad}}</p>
-    <p text-center><strong>BioTipo: </strong>{{aluno?.biotipo}}</p>
-    <p text-center><strong>Sexo: </strong>{{aluno?.sexo === 'M' ? 'Masculino' : 'Feminino'}} </p>
-    <p text-center><strong>Peso: </strong> {{aluno?.peso}}</p>
-    <p text-center><strong>Altura: </strong> {{aluno?.altura}}</p>
-    <p text-center><strong>IMC: </strong> {{aluno?.imc}}</p>
+    <!--Usuário = ALUNO-->
+      <p text-center *ngIf="alunoA"><b>Email:</b>{{aluno?.email}}</p>
+      <p text-center *ngIf="alunoA"><b>Data Nascimento:</b>{{aluno?.data_nasc}}</p>
+      <p text-center *ngIf="alunoA"><b>Data Cadastro:</b>{{aluno?.data_cad}}</p>
+      <p text-center *ngIf="alunoA"><b>Sexo:</b>{{aluno?.sexo === 'M' ? 'Masculino' : 'Feminino'}}</p>
+      <p text-center *ngIf="alunoA"><b>BioTipo:</b>{{aluno?.biotipo}}</p>
+      <p text-center *ngIf="alunoA"><b>Peso:</b>{{aluno?.peso}}</p>
+      <p text-center *ngIf="alunoA"><b>Altura:</b>{{aluno?.altura}}</p>
+      <p text-center *ngIf="alunoA"><b>Imc:</b>{{aluno?.imc}}</p>
+    <!--FIM-->  
+    
+    <!--Usuário = INSTRUTOR-->
+      <p text-center *ngIf="instrutorA"><b>Email:</b>{{instrutor?.email}}</p>
+      <p text-center *ngIf="instrutorA"><b>Data Nascimento:</b>{{instrutor?.data_nasc}}</p>
+      <p text-center *ngIf="instrutorA"><b>Data Cadastro:</b>{{instrutor?.data_cad}}</p>
+      <p text-center *ngIf="instrutorA"><b>Sexo:</b>{{instrutor?.sexo === 'M' ? 'Masculino' : 'Feminino'}}</p>
+      <p text-center *ngIf="instrutorA"><b>Nº Crf:</b>{{instrutor?.numCrf}}</p>
+    <!--FIM--> 
   </ion-card>
+
 </ion-content>
