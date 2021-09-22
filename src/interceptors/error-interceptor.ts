@@ -7,7 +7,7 @@ import { StorageService } from '../services/storage.service';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-    constructor(public storage: StorageService){
+    constructor(public storage: StorageService, public alertCtrl: AlertController){
 
     }
 
@@ -27,17 +27,52 @@ export class ErrorInterceptor implements HttpInterceptor {
             console.log(errorObj);
 
             switch(errorObj.status){
+                case 401:
+                    this.handle401();
+                    break;
+
                 case 403:
                     this.handle403();
                     break;
+
+                default:
+                    this.handleDefaultEror(errorObj);    
             }
 
             return Observable.throw(errorObj);
         }) as any;
     }
 
+    handle401(){
+        let alert = this.alertCtrl.create({
+            title: 'Erro 401: Falha de autenticação',//titulo do alert
+            message: 'Email ou senha incorretos',//mensagem do alert
+            enableBackdropDismiss: false, //para sair do alert tem que apertar no botão do alert
+            buttons: [//lista de botões, definindo como objeto
+                {
+                    text: 'Ok'
+                }
+            ]
+        });
+        alert.present(); //Apresenta o alert
+    }
+
     handle403(){
         this.storage.setLocalUser(null);
+    }
+
+    handleDefaultEror(error){
+        let alert = this.alertCtrl.create({
+            title: 'Erro ' + error.status + ': ' + error.error,//titulo do alert
+            message: error.message,//mensagem do alert
+            enableBackdropDismiss: false, //para sair do alert tem que apertar no botão do alert
+            buttons: [//lista de botões, definindo como objeto
+                {
+                    text: 'Ok'
+                }
+            ]
+        });
+        alert.present(); //Apresenta o alert
     }
 }
 

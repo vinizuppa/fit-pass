@@ -33,10 +33,7 @@ export class AtividadesPage {
     .subscribe(response => {//Usamos arrow function
       this.items = response;
     },
-    error => {
-      
-    });
+    error => {});
 
   }
-
 }
