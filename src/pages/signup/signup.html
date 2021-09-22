@@ -5,18 +5,95 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="signupUser(); $event.preventDefault()">
+ <form (ngSubmit)="signupUser(); $event.preventDefault()">
+    <ion-list radio-group [(ngModel)]="radioValue" name="radioValue" (ionChange)="checkValue($event)">
+        <ion-list-header>
+          <ion-label>
+            Tipo de Usuário
+         </ion-label>
+        </ion-list-header>
+
+      <ion-item>
+        <ion-label>Aluno</ion-label>
+        <ion-radio value="aluno" checked="true"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Instrutor</ion-label>
+        <ion-radio value="instrutor"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Estabelecimento</ion-label>
+        <ion-radio value="estabelecimento"></ion-radio>
+      </ion-item>
+    </ion-list>
+
     <ion-item>
       <ion-label stacked>Nome*</ion-label>
       <ion-input name="nome" type="text"></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-label stacked>Email*</ion-label>
       <ion-input name="email" type="text"></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-label stacked>CPF ou CNPJ</ion-label>
       <ion-input name="cpfOuCnpj" type="text"></ion-input>
+    </ion-item>
+
+    <!--Usuário = ALUNO-->
+    <div *ngIf="aluno">
+      <ion-item>
+        <ion-label stacked>Sexo*</ion-label>
+        <ion-select>
+          <ion-option value = "M" >Masculino</ion-option>
+          <ion-option value = "F" >Feminino</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>BioTipo*</ion-label>
+        <ion-select>
+          <ion-option value = 0>Ectomorfo</ion-option>
+          <ion-option value = 1>Mesomorfo</ion-option>
+          <ion-option value = 2>Endomorfo</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Peso*</ion-label>
+        <ion-input name="peso" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Altura*</ion-label>
+        <ion-input name="altura" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>IMC*</ion-label>
+        <ion-input name="imc" type="text"></ion-input>
+      </ion-item>
+    </div>
+    <!--FIM--> 
+
+    <!--Usuário = INSTRUTOR-->
+     <div *ngIf="instrutor">
+      <ion-item>
+        <ion-label stacked>Num CRF*</ion-label>
+        <ion-input name="num" type="number"></ion-input>
+      </ion-item>
+    </div>
+    <!--FIM--> 
+
+    <!--Usuário = INSTRUTOR-->
+     <div *ngIf="estabelecimento">
+      
+    </div>
+    <!--FIM--> 
+
+    <ion-item>
+      <ion-label>Data Nascimento</ion-label>
+      <ion-input name="data" type="date"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Senha*</ion-label>
@@ -52,7 +129,7 @@
     </ion-item>
     <ion-item>
       <ion-label stacked>Estado*</ion-label>
-      <ion-select name="estadoId" (ionChange)="updateCidades()">
+      <ion-select name="estadoId">
         <ion-option value = "1">Minas Gerais</ion-option>
         <ion-option value = "2">São Paulo</ion-option>
       </ion-select>
@@ -64,6 +141,8 @@
         <ion-option value = "2">Campinas</ion-option>
       </ion-select>
     </ion-item>
+    
     <button ion-button block type="submit">Criar conta</button>
   </form>
+
 </ion-content>

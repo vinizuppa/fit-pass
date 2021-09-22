@@ -25,6 +25,7 @@ export class MyApp {
     this.pages = [
       { title: 'Profile Aluno', component: 'ProfileAlunoPage' },
       { title: 'Atividades', component: 'AtividadesPage' },
+      { title: 'Signup', component: 'SignupPagePage' },
       { title: 'Logout', component: ''}
     ];
 
