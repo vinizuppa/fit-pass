@@ -24,12 +24,8 @@ export class HomePage {
    
   }
 
-  ionViewWillEnter() {//Quando entra na página de login, desabilita o menu
+  ionViewWillEnter() {
     this.menu.swipeEnable(false);
-  }
-
-  ionViewDidLeave() {//Quando sai na página de login, habilita novamente o menu
-    this.menu.swipeEnable(true);
   }
 
   ionViewDidEnter(){

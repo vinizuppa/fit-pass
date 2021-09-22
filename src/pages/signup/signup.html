@@ -5,8 +5,8 @@
 </ion-header>
 
 <ion-content padding>
- <form (ngSubmit)="signupUser(); $event.preventDefault()">
-    <ion-list radio-group [(ngModel)]="radioValue" name="radioValue" (ionChange)="checkValue($event)">
+ <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
+    <ion-list radio-group [(ngModel)]="radioValue" [ngModelOptions]="{standalone: true}" name="radioValue" (ionChange)="checkValue($event)">
         <ion-list-header>
           <ion-label>
             Tipo de Usuário
@@ -15,7 +15,7 @@
 
       <ion-item>
         <ion-label>Aluno</ion-label>
-        <ion-radio value="aluno" checked="true"></ion-radio>
+        <ion-radio checked="true" value="aluno"></ion-radio>
       </ion-item>
 
       <ion-item>
@@ -31,31 +31,31 @@
 
     <ion-item>
       <ion-label stacked>Nome*</ion-label>
-      <ion-input name="nome" type="text"></ion-input>
+      <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Email*</ion-label>
-      <ion-input name="email" type="text"></ion-input>
+      <ion-input formControlName="email" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>CPF ou CNPJ</ion-label>
-      <ion-input name="cpfOuCnpj" type="text"></ion-input>
+      <ion-input formControlName="cpf" type="text"></ion-input>
     </ion-item>
 
     <!--Usuário = ALUNO-->
     <div *ngIf="aluno">
       <ion-item>
         <ion-label stacked>Sexo*</ion-label>
-        <ion-select>
-          <ion-option value = "M" >Masculino</ion-option>
-          <ion-option value = "F" >Feminino</ion-option>
+        <ion-select formControlName="sexo">
+          <ion-option value = "M">Masculino</ion-option>
+          <ion-option value = "F">Feminino</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label stacked>BioTipo*</ion-label>
-        <ion-select>
+        <ion-select formControlName="biotipo">
           <ion-option value = 0>Ectomorfo</ion-option>
           <ion-option value = 1>Mesomorfo</ion-option>
           <ion-option value = 2>Endomorfo</ion-option>
@@ -63,15 +63,15 @@
       </ion-item>
       <ion-item>
         <ion-label stacked>Peso*</ion-label>
-        <ion-input name="peso" type="text"></ion-input>
+        <ion-input formControlName="peso" type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked>Altura*</ion-label>
-        <ion-input name="altura" type="number"></ion-input>
+        <ion-input formControlName="altura" type="number"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked>IMC*</ion-label>
-        <ion-input name="imc" type="text"></ion-input>
+        <ion-input formControlName="imc" type="text"></ion-input>
       </ion-item>
     </div>
     <!--FIM--> 
@@ -80,7 +80,7 @@
      <div *ngIf="instrutor">
       <ion-item>
         <ion-label stacked>Num CRF*</ion-label>
-        <ion-input name="num" type="number"></ion-input>
+        <ion-input formControlName="numCrf" type="number"></ion-input>
       </ion-item>
     </div>
     <!--FIM--> 
@@ -93,50 +93,50 @@
 
     <ion-item>
       <ion-label>Data Nascimento</ion-label>
-      <ion-input name="data" type="date"></ion-input>
+      <ion-input formControlName="data_nasc" type="date"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Senha*</ion-label>
-      <ion-input name="senha" type="password"></ion-input>
+      <ion-input formControlName="senha" type="password"></ion-input>
     </ion-item> 
     <ion-item>
       <ion-label stacked>Logradouro*</ion-label>
-      <ion-input name="logradouro" type="text"></ion-input>
+      <ion-input formControlName="logradouro" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Número*</ion-label>
-      <ion-input name="numero" type="text"></ion-input>
+      <ion-input formControlName="numero" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Complemento</ion-label>
-      <ion-input name="complemento" type="text"></ion-input>
+      <ion-input formControlName="complemento" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Bairro</ion-label>
-      <ion-input name="bairro" type="text"></ion-input>
+      <ion-input formControlName="bairro" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>CEP*</ion-label>
-      <ion-input name="cep" type="text"></ion-input>
+      <ion-input formControlName="cep" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Telefone 1*</ion-label>
-      <ion-input name="telefone1" type="text"></ion-input>
+      <ion-input formControlName="telefone1" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Telefone 2</ion-label>
-      <ion-input name="telefone2" type="text"></ion-input>
+      <ion-input formControlName="telefone2" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Estado*</ion-label>
-      <ion-select name="estadoId">
+      <ion-select formControlName="estadoId">
         <ion-option value = "1">Minas Gerais</ion-option>
         <ion-option value = "2">São Paulo</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label stacked>Cidade*</ion-label>
-      <ion-select name="cidadeId">
+      <ion-select formControlName="cidadeId">
         <ion-option value = "1">Uberlândia</ion-option>
         <ion-option value = "2">Campinas</ion-option>
       </ion-select>
