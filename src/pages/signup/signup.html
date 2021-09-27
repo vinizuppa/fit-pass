@@ -33,11 +33,14 @@
       <ion-label stacked>Nome*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
+    <!--Testa se um campo do formulário foi mexido após o carregamento da página e válida de acordo com os validators do arquivo.ts-->
+    <p class="validacao" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>Valor inválido</p>
 
     <ion-item>
       <ion-label stacked>Email*</ion-label>
       <ion-input formControlName="email" type="text"></ion-input>
     </ion-item>
+    <p class="validacao" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>Valor inválido</p>
 
     <ion-item>
       <ion-label stacked>CPF ou CNPJ</ion-label>
@@ -65,14 +68,17 @@
         <ion-label stacked>Peso*</ion-label>
         <ion-input formControlName="peso" type="text"></ion-input>
       </ion-item>
+      <p class="validacao" *ngIf="formGroup.controls.peso.dirty && formGroup.controls.peso.errors" margin-left>Valor inválido</p>
       <ion-item>
         <ion-label stacked>Altura*</ion-label>
         <ion-input formControlName="altura" type="number"></ion-input>
       </ion-item>
+      <p class="validacao" *ngIf="formGroup.controls.altura.dirty && formGroup.controls.altura.errors" margin-left>Valor inválido</p>
       <ion-item>
         <ion-label stacked>IMC*</ion-label>
         <ion-input formControlName="imc" type="text"></ion-input>
       </ion-item>
+      <p class="validacao" *ngIf="formGroup.controls.imc.dirty && formGroup.controls.imc.errors" margin-left>Valor inválido</p>
     </div>
     <!--FIM--> 
 
@@ -95,6 +101,8 @@
       <ion-label>Data Nascimento</ion-label>
       <ion-input formControlName="data_nasc" type="date"></ion-input>
     </ion-item>
+    <p class="validacao" *ngIf="formGroup.controls.data_nasc.dirty && formGroup.controls.data_nasc.errors" margin-left>Valor inválido</p>
+
     <ion-item>
       <ion-label stacked>Senha*</ion-label>
       <ion-input formControlName="senha" type="password"></ion-input>
@@ -103,26 +111,38 @@
       <ion-label stacked>Logradouro*</ion-label>
       <ion-input formControlName="logradouro" type="text"></ion-input>
     </ion-item>
+    <p class="validacao" *ngIf="formGroup.controls.logradouro.dirty && formGroup.controls.logradouro.errors" class="validacao" margin-left>Valor inválido</p>
+
     <ion-item>
       <ion-label stacked>Número*</ion-label>
       <ion-input formControlName="numero" type="text"></ion-input>
     </ion-item>
+    <p class="validacao" *ngIf="formGroup.controls.numero.dirty && formGroup.controls.numero.errors" class="validacao" margin-left>Valor inválido</p>
+
     <ion-item>
       <ion-label stacked>Complemento</ion-label>
       <ion-input formControlName="complemento" type="text"></ion-input>
     </ion-item>
+    <p class="validacao" *ngIf="formGroup.controls.complemento.dirty && formGroup.controls.complemento.errors" class="validacao" margin-left>Valor inválido</p>
+
     <ion-item>
       <ion-label stacked>Bairro</ion-label>
       <ion-input formControlName="bairro" type="text"></ion-input>
     </ion-item>
+    <p class="validacao" *ngIf="formGroup.controls.bairro.dirty && formGroup.controls.bairro.errors" class="validacao" margin-left>Valor inválido</p>
+
     <ion-item>
       <ion-label stacked>CEP*</ion-label>
       <ion-input formControlName="cep" type="text"></ion-input>
     </ion-item>
+    <p class="validacao" *ngIf="formGroup.controls.cep.dirty && formGroup.controls.cep.errors" class="validacao" margin-left>Valor inválido</p>
+
     <ion-item>
       <ion-label stacked>Telefone 1*</ion-label>
       <ion-input formControlName="telefone1" type="text"></ion-input>
     </ion-item>
+    <p class="validacao" *ngIf="formGroup.controls.telefone1.dirty && formGroup.controls.telefone1.errors" class="validacao" margin-left>Valor inválido</p>
+
     <ion-item>
       <ion-label stacked>Telefone 2</ion-label>
       <ion-input formControlName="telefone2" type="text"></ion-input>
@@ -139,8 +159,8 @@
         <ion-option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</ion-option>
       </ion-select>
     </ion-item>
-    
-    <button ion-button block type="submit">Criar conta</button>
+    <!--O botão estará desabilitado se qualquer uma das validações falhar-->
+    <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar conta</button>
   </form>
 
 </ion-content>
