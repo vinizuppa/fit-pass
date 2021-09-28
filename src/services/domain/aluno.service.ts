@@ -18,4 +18,15 @@ export class AlunoService{
         let url = `${API_CONFIG.bucketBaseUrl}/al${id}.jpg`
         return this.http.get(url, {responseType: 'blob'});
     }
+
+    insert(obj: AlunoDTO){
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/alunos`,
+            obj,
+            {
+                observe: 'response',
+                responseType: 'text'
+            }
+        );
+    }
 }

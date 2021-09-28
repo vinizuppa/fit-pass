@@ -18,4 +18,15 @@ export class InstrutorService{
         let url = `${API_CONFIG.bucketBaseUrl}/ins${id}.jpg`
         return this.http.get(url, {responseType: 'blob'});
     }
+
+    insert(obj: InstrutorDTO){
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/instrutores`,
+            obj,
+            {
+                observe: 'response',
+                responseType: 'text'
+            }
+        );
+    }
 }

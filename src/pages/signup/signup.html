@@ -47,15 +47,16 @@
       <ion-input formControlName="cpf" type="text"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-label stacked>Sexo*</ion-label>
+      <ion-select formControlName="sexo">
+        <ion-option value = "M">Masculino</ion-option>
+        <ion-option value = "F">Feminino</ion-option>
+      </ion-select>
+    </ion-item>
+
     <!--Usuário = ALUNO-->
     <div *ngIf="aluno">
-      <ion-item>
-        <ion-label stacked>Sexo*</ion-label>
-        <ion-select formControlName="sexo">
-          <ion-option value = "M">Masculino</ion-option>
-          <ion-option value = "F">Feminino</ion-option>
-        </ion-select>
-      </ion-item>
       <ion-item>
         <ion-label stacked>BioTipo*</ion-label>
         <ion-select formControlName="biotipo">
@@ -91,7 +92,7 @@
     </div>
     <!--FIM--> 
 
-    <!--Usuário = INSTRUTOR-->
+    <!--Usuário = ESTABELECIMENTO-->
      <div *ngIf="estabelecimento">
       
     </div>
@@ -160,7 +161,7 @@
       </ion-select>
     </ion-item>
     <!--O botão estará desabilitado se qualquer uma das validações falhar-->
-    <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar conta</button>
+    <button ion-button block type="submit">Criar conta</button>
   </form>
 
 </ion-content>
