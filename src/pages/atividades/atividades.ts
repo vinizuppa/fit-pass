@@ -32,8 +32,20 @@ export class AtividadesPage {
     this.atividadeService.findAll()
     .subscribe(response => {//Usamos arrow function
       this.items = response;
+      this.loadImageUrls();
     },
     error => {});
 
+  }
+
+  loadImageUrls(){
+    for(var i=0; i<this.items.length; i++){
+      let item = this.items[i];
+      this.atividadeService.getImageFromBucket(item.id)
+        .subscribe(response => {
+          item.imageUrl = `${API_CONFIG.bucketBaseUrl}/atv${item.id}.jpg`;
+        },
+        error => {});
+    }
   }
 }

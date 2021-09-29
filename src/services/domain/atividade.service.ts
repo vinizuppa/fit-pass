@@ -13,4 +13,9 @@ export class AtividadeService{
     findAll() : Observable<AtividadeDTO[]>{//Metodo responsável por retornar lista das atividades
         return this.http.get<AtividadeDTO[]>(`${API_CONFIG.baseUrl}/atividades`);
     }
+
+    getImageFromBucket(id: string) : Observable<any>{
+        let url = `${API_CONFIG.bucketBaseUrl}/atv${id}.jpg`
+        return this.http.get(url, {responseType : 'blob'});
+    }
 }
