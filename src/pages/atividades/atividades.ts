@@ -48,4 +48,8 @@ export class AtividadesPage {
         error => {});
     }
   }
+
+  showDetail(){
+    this.navCtrl.push('AtividadeDetailPage');
+  }
 }
