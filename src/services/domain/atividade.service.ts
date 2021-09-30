@@ -18,4 +18,8 @@ export class AtividadeService{
         let url = `${API_CONFIG.bucketBaseUrl}/atv${id}.jpg`
         return this.http.get(url, {responseType : 'blob'});
     }
+
+    findById(atividade_id: string){
+        return this.http.get<AtividadeDTO>(`${API_CONFIG.baseUrl}/atividades/${atividade_id}`);
+    }
 }

@@ -49,7 +49,7 @@ export class AtividadesPage {
     }
   }
 
-  showDetail(){
-    this.navCtrl.push('AtividadeDetailPage');
+  showDetail(atividade_id: string){
+    this.navCtrl.push('AtividadeDetailPage', {atividade_id: atividade_id});
   }
 }
