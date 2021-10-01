@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Novo Script Treino</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="list"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <form [formGroup]="formGroup" (ngSubmit)="teste(); $event.preventDefault()">
+  <ion-input formControlName="instrutor" hidden="true" [value]="instrutor?.id" type="text"></ion-input>
+
+  <ion-item>
+    <ion-label stacked>Instrutor*</ion-label>
+    <ion-input disabled="true" [value]="instrutor?.nome" type="text"></ion-input>
+  </ion-item>
+    
+  <ion-item>   
+    <ion-label stacked>Aluno*</ion-label>
+      <ion-select formControlName="alunoId">
+        <ion-option *ngFor="let aluno of alunos" [value]="aluno.id">{{aluno.nome}}</ion-option>
+      </ion-select>
+  </ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Quantidade de Atividades</ion-label>
+      <ion-select [(ngModel)]="qtd" [ngModelOptions]="{standalone: true}" name="qtd" (ionChange)="checkValue($event)">
+        <ion-option value="1" selected="true">1</ion-option>
+        <ion-option value="2">2</ion-option>
+        <ion-option value="3">3</ion-option>
+        <ion-option value="4">4</ion-option>
+        <ion-option value="5">5</ion-option>
+        <ion-option value="6">6</ion-option>
+        <ion-option value="7">7</ion-option>
+        <ion-option value="8">8</ion-option>
+        <ion-option value="9">9</ion-option>
+        <ion-option value="10">10</ion-option>
+        <ion-option value="11">11</ion-option>
+        <ion-option value="12">12</ion-option>
+        <ion-option value="13">13</ion-option>
+        <ion-option value="14">14</ion-option>
+        <ion-option value="15">15</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div class="cards" *ngFor="">
+    <ion-card>
+      <ion-card-header>
+        Header
+      </ion-card-header>
+      <ion-card-content>
+        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+      </ion-card-content>
+    </ion-card>
+  </div>
+    <!--O botão estará desabilitado se qualquer uma das validações falhar-->
+    <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar Script</button>
+  </form>
+
+</ion-content>

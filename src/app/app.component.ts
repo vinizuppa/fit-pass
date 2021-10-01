@@ -26,6 +26,7 @@ export class MyApp {
       { title: 'Profile Aluno', component: 'ProfileAlunoPage' },
       { title: 'Atividades', component: 'AtividadesPage' },
       { title: 'Signup', component: 'SignupPagePage' },
+      { title: 'Novo Script', component: 'NovoScriptPage' },
       { title: 'Logout', component: ''}
     ];
 

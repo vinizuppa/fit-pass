@@ -29,4 +29,8 @@ export class AlunoService{
             }
         );
     }
+
+    findAll() : Observable<AlunoDTO[]>{//Metodo responsável por retornar lista dos alunos
+        return this.http.get<AlunoDTO[]>(`${API_CONFIG.baseUrl}/alunos`);
+    }
 }
