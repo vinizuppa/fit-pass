@@ -27,6 +27,7 @@ export class MyApp {
       { title: 'Atividades', component: 'AtividadesPage' },
       { title: 'Signup', component: 'SignupPagePage' },
       { title: 'Novo Script', component: 'NovoScriptPage' },
+      { title: 'Nova Avaliação', component: 'NovaAvaliacaoPage' },
       { title: 'Logout', component: ''}
     ];
 

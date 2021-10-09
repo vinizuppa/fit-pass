@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Nova Avaliacao</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="list"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="submit(); $event.preventDefault()">
+   <ion-input formControlName="instrutorId" hidden="true" [value]="instrutor?.id" type="text"></ion-input>
+ 
+   <ion-item>
+     <ion-label stacked>Instrutor*</ion-label>
+     <ion-input disabled="true" [value]="instrutor?.nome" type="text"></ion-input>
+   </ion-item>
+     
+   <ion-item>   
+     <ion-label stacked>Aluno*</ion-label>
+       <ion-select formControlName="alunoId">
+         <ion-option *ngFor="let aluno of alunos" [value]="aluno?.id">{{aluno?.nome}}</ion-option>
+       </ion-select>
+   </ion-item>
+
+   <ion-item>
+    <ion-label stacked>Altura*</ion-label>
+    <ion-input formControlName="altura" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Peso*</ion-label>
+    <ion-input formControlName="peso" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Imc*</ion-label>
+    <ion-input formControlName="imc" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Observação*</ion-label>
+    <ion-textarea formControlName="obs" autoGrow="true" type="text"></ion-textarea>
+  </ion-item>
+   
+     <!--O botão estará desabilitado se qualquer uma das validações falhar-->
+     <button ion-button block [disabled]="formGroup.invalid" type="submit">Criar Avaliação</button>
+   </form>
+ 
+ </ion-content>

@@ -16,6 +16,7 @@ import { AlunoService } from '../services/domain/aluno.service';
 import { AuthInterceptor, AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { UsuarioService } from '../services/domain/usuario.service';
 import { InstrutorService } from '../services/domain/instrutor.service';
+import { AvaliacaoService } from '../services/domain/avaliacao.service';
 
 @NgModule({//Anotação que tem configurações para alterar a classe
   declarations: [
@@ -41,7 +42,8 @@ import { InstrutorService } from '../services/domain/instrutor.service';
     StorageService,
     AlunoService,
     InstrutorService,
-    UsuarioService
+    UsuarioService,
+    AvaliacaoService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
