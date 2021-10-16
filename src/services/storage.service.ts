@@ -1,7 +1,9 @@
+import { Token } from "@angular/compiler";
 import { Injectable } from "@angular/core";
 import { STORAGE_KEYS } from "../config/storage_keys.config";
 import { LocalUser } from "../models/local_user";
 import { PerfilDTO } from "../models/perfil.dto";
+import { TokenDTO } from "../models/token.dto";
 
 //Serviço responsável por obter ou armazenar um objeto LocalUser
 @Injectable()
@@ -43,4 +45,5 @@ export class StorageService{
             localStorage.setItem(STORAGE_KEYS.perfis, JSON.stringify(obj));
         }
     }
+
 }

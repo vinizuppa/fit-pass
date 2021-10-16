@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
@@ -35,6 +35,7 @@ import { AvaliacaoService } from '../services/domain/avaliacao.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     AtividadeService,
     AuthInterceptorProvider,
     ErrorInterceptorProvider,

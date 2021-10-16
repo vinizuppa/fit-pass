@@ -12,3 +12,8 @@ export interface AvaliacaoDTO{
     aluno: any;
     instrutor: any;
 }
+
+
+export interface Content{
+    content: AvaliacaoDTO[];
+}

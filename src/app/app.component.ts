@@ -3,13 +3,17 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../services/auth.service';
+import { StorageService } from '../services/storage.service';
+import { UsuarioService } from '../services/domain/usuario.service';
+import { PerfilDTO } from '../models/perfil.dto';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+  perfil: PerfilDTO;
+  localPerfil: PerfilDTO;
   rootPage: string = 'HomePage';//define qual a página que ira aparecer quando o app for aberto
 
   pages: Array<{title: string, component: string}>;
@@ -17,20 +21,23 @@ export class MyApp {
   constructor(public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    public auth: AuthService
+    public auth: AuthService,
+    public storage: StorageService,
+    public usuarioService: UsuarioService
     ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Profile Aluno', component: 'ProfileAlunoPage' },
-      { title: 'Atividades', component: 'AtividadesPage' },
-      { title: 'Signup', component: 'SignupPagePage' },
-      { title: 'Novo Script', component: 'NovoScriptPage' },
-      { title: 'Nova Avaliação', component: 'NovaAvaliacaoPage' },
-      { title: 'Logout', component: ''}
-    ];
+        this.pages = [
+          { title: 'Perfil', component: 'ProfileAlunoPage' },
+          { title: 'Atividades', component: 'AtividadesPage' },
+          { title: 'Novo Script', component: 'NovoScriptPage' },
+          { title: 'Nova Avaliação', component: 'NovaAvaliacaoPage' },
+          { title: 'Minhas Avaliações', component: 'ListaAvaliacoesPage' },
+          { title: 'Logout', component: ''}
+        ];
 
+  
   }
 
   initializeApp() {

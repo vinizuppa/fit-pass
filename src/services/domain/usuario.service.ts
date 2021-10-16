@@ -10,6 +10,12 @@ export class UsuarioService{
     }
 
   findPerfilByEmail(email : string) : Observable<PerfilDTO>{
+      if(email!=null){
         return this.http.get<PerfilDTO>(`${API_CONFIG.baseUrl}/usuarios/email/?value=${email}`);
+      }
+      else{
+        return null;
+      }
+        
     }
 }

@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Rx";
 import { API_CONFIG } from "../../config/api.config";
 import { AtividadeDTO } from "../../models/atividade.dto";
-
+import { map } from 'rxjs/operators';
 //define uma classe service
 @Injectable()//Anotação para poder injetar essa classe em demais arquivos
 export class AtividadeService{
@@ -11,7 +11,7 @@ export class AtividadeService{
     }
 
     findAll() : Observable<AtividadeDTO[]>{//Metodo responsável por retornar lista das atividades
-        return this.http.get<AtividadeDTO[]>(`${API_CONFIG.baseUrl}/atividades`);
+        return this.http.get<AtividadeDTO[]>(`${API_CONFIG.baseUrl}/atividades`)
     }
 
     getImageFromBucket(id: string) : Observable<any>{
