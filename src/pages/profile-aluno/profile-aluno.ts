@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 import { AlunoDTO } from '../../models/aluno.dto';
@@ -30,13 +31,17 @@ export class ProfileAlunoPage {
   localPerfil: PerfilDTO;
   alunoA: boolean;
   instrutorA: boolean;
+  picture: string;
+  cameraOn: boolean = false;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: StorageService,
     public alunoService: AlunoService,
     public instrutorService: InstrutorService,
-    public usuarioService: UsuarioService) {
+    public usuarioService: UsuarioService,
+    public camera: Camera) {
   }
 
   ionViewDidLoad() {
@@ -108,5 +113,24 @@ export class ProfileAlunoPage {
     }   
   } 
   
+  getCameraPicture(){
+    this.cameraOn = true;
+
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
+     this.picture = 'data:image/png;base64,' + imageData;
+     this.cameraOn = false;
+    }, (err) => {
+     // Handle error
+    });
+  }
 
 }
