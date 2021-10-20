@@ -45,6 +45,10 @@ export class ProfileAlunoPage {
   }
 
   ionViewDidLoad() {
+    this.loadData();
+  }
+
+  loadData(){
     let localUser = this.storage.getLocalUser();
     this.localPerfil = this.storage.getPerfilUser();
     this.usuarioService.findPerfilByEmail(localUser.email).subscribe(response =>{
@@ -59,7 +63,6 @@ export class ProfileAlunoPage {
     }
   }
 
-  
   getImageIfExists(){
     for (let index = 0; index < this.localPerfil.perfis.length; index++) {
       if(this.localPerfil.perfis[index] == "ALUNO"){
@@ -132,5 +135,32 @@ export class ProfileAlunoPage {
      // Handle error
     });
   }
+ 
+  sendPicture(){
+    if(this.alunoA){
+      this.alunoService.uploadPicture(this.picture)
+      .subscribe(response => {
+        this.picture = null;
+        this.loadData();
+      },
+      error =>{
 
+      });
+    }
+
+    else if(this.instrutorA){
+      this.instrutorService.uploadPicture(this.picture)
+      .subscribe(response => {
+        this.picture = null;
+        this.loadData();
+      },
+      error =>{
+
+      });
+    }
+  }
+
+  cancel(){
+    this.picture = null;
+  }
 }
