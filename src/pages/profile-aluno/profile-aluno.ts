@@ -84,8 +84,10 @@ export class ProfileAlunoPage {
   }
     
   findByEmail(email : string){
-    for (let index = 0; index < this.localPerfil.perfis.length; index++) {
-      if(this.localPerfil.perfis[index] == "ALUNO"){
+    //for (let index = 0; index < this.localPerfil.perfis.length; index++) {
+    
+     // if(this.localPerfil.perfis[index] == "ALUNO"){
+      if(this.localPerfil.perfis.includes("ALUNO")){
         this.alunoService.findByEmail(email)
         .subscribe(response => {
           this.aluno = response;
@@ -99,7 +101,8 @@ export class ProfileAlunoPage {
           }
         });
       } 
-      else if(this.localPerfil.perfis[index] == "INSTRUTOR"){
+     // else if(this.localPerfil.perfis[index] == "INSTRUTOR"){
+      else if(this.localPerfil.perfis.includes("INSTRUTOR")){
         this.instrutorService.findByEmail(email)
         .subscribe(response => {
           this.instrutor = response;
@@ -113,7 +116,7 @@ export class ProfileAlunoPage {
           }
         });
       } 
-    }   
+   // }   
   } 
   
   getCameraPicture(){

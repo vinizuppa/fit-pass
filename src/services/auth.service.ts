@@ -4,13 +4,19 @@ import { JwtHelper } from "angular2-jwt";
 import { API_CONFIG } from "../config/api.config";
 import { CredenciaisDTO } from "../models/credenciais.dto";
 import { LocalUser } from "../models/local_user";
+import { PerfilDTO } from "../models/perfil.dto";
+import { UsuarioService } from "./domain/usuario.service";
 import { StorageService } from "./storage.service";
 
 @Injectable()//Anotação para poder injetar essa classe em demais arquivos
 export class AuthService{
     jwtHelper: JwtHelper = new JwtHelper();
+    perfil: PerfilDTO;
+    localPerfil: PerfilDTO;
 
-    constructor(public http: HttpClient, public storage: StorageService){
+    constructor(public http: HttpClient, 
+        public storage: StorageService,
+        public usuarioService: UsuarioService,){
 
     }
 
@@ -41,9 +47,14 @@ export class AuthService{
             email: this.jwtHelper.decodeToken(tok).sub
         };
         this.storage.setLocalUser(user);
+        this.usuarioService.findPerfilByEmail(user.email).subscribe(response =>{
+            this.storage.setPerfilUser(response)
+          })
     }
 
     logout(){
+        this.storage.setPerfilUser(null);
         this.storage.setLocalUser(null);
     }
+
 }

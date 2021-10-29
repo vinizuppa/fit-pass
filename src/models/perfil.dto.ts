@@ -1,4 +1,4 @@
 
 export interface PerfilDTO{
-    perfis: Array<any>;
+    perfis: Array<string>;
 }
