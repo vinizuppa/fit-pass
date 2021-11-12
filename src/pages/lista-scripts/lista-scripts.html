@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="nav-theme">
+    <button ion-button menuToggle>
+      <ion-icon name="list"></ion-icon>
+    </button>
+    <ion-title>Meus Scripts</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>  
+    <ion-card *ngFor="let obj of objs">
+      <ion-card-header>
+        <ion-badge item-end>{{ obj.id }}</ion-badge>
+        <ion-badge color="{{obj.ativo === 'INATIVO' ? 'danger' : 'nav-theme'}}">{{obj.ativo}}</ion-badge>
+        <b>Instrutor: </b>{{ obj.instrutor.nome }}
+      </ion-card-header>
+      <ion-card-content>
+        <div *ngFor="let item of obj.itens">
+          <p><b>Dia: </b>{{ item.diasemana }}</p>
+          <p><b>Repetições: </b>{{ item.qtd_rep }}</p>
+          <p><b>Séries: </b>{{ item.qtd_series }}</p>
+          <p><b>Atividade: </b>{{ item.atividade.nome }}</p>
+          <hr>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>       
+</ion-content>

@@ -34,6 +34,7 @@ export class MyApp {
           { title: 'Novo Script', component: 'NovoScriptPage' },
           { title: 'Nova Avaliação', component: 'NovaAvaliacaoPage' },
           { title: 'Minhas Avaliações', component: 'ListaAvaliacoesPage' },
+          { title: 'Meus Scripts', component: 'ListaScriptsPage' },
           { title: 'Página Inicial', component: 'HomeAlunoPage' },
           { title: 'Logout', component: ''}
         ];

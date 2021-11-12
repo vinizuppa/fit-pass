@@ -6,7 +6,7 @@
     <ion-list>
       <ion-item>
         <ion-label stacked>Atividade:</ion-label>
-        <ion-select (ionChange)="checkValue($event)">
+        <ion-select (ionChange)="checkValue($event)" formControlName="atividade">
           <ion-option value="1" selected="true">Cerrote</ion-option>
           <ion-option value="2">Rosca Direta</ion-option>
           <ion-option value="3">Agachamento</ion-option>

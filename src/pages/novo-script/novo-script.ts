@@ -85,7 +85,8 @@ export class NovoScriptPage {
     const obj = {
       "aluno": { "id": obj2.alunoId },
       "instrutor": { "id": obj2.instrutor },
-      "itens": this.itensScript
+      "itens": this.itensScript,
+      "ativo": null
     }
     console.log(obj);
     this.scriptService.insert(obj)

@@ -27,9 +27,9 @@ export class ItensScriptPage {
     ) {
       this.formGroup = this.formBuilder.group({
         qtd_rep: [null, [Validators.required]],
-        qtd_series: [1, [Validators.required]],
-        diasemana: [0, [Validators.required]]
-        //atividade: [null, [Validators.required]]
+        qtd_series: [null, [Validators.required]],
+        diasemana: [null, [Validators.required]],
+        atividade: [null, [Validators.required]]
       });
   }
 
@@ -52,7 +52,7 @@ export class ItensScriptPage {
         "qtd_rep" : obj.qtd_rep,   
         "qtd_series" : obj.qtd_series,
         "diasemana" : obj.diasemana,
-        "atividade" : {"id" : 1},
+        "atividade" : {"id" : obj.atividade},
         "index": this.valor
       }
     )
