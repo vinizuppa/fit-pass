@@ -18,6 +18,8 @@ import { UsuarioService } from '../services/domain/usuario.service';
 import { InstrutorService } from '../services/domain/instrutor.service';
 import { AvaliacaoService } from '../services/domain/avaliacao.service';
 import { ImageUtilService } from '../services/image-util.service';
+import { ItensScriptPage } from '../pages/itens-script/itens-script';
+import { ScriptService } from '../services/domain/script.service';
 
 @NgModule({//Anotação que tem configurações para alterar a classe
   declarations: [
@@ -46,7 +48,8 @@ import { ImageUtilService } from '../services/image-util.service';
     InstrutorService,
     UsuarioService,
     AvaliacaoService, 
-    ImageUtilService
+    ImageUtilService,
+    ScriptService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

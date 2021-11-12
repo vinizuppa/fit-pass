@@ -1,0 +1,48 @@
+<form [formGroup]="formGroup">
+  <ion-card-header>
+    Atividade {{valor}}
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Atividade:</ion-label>
+        <ion-select (ionChange)="checkValue($event)">
+          <ion-option value="1" selected="true">Cerrote</ion-option>
+          <ion-option value="2">Rosca Direta</ion-option>
+          <ion-option value="3">Agachamento</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Dia da Semana:</ion-label>
+        <ion-select (ionChange)="checkValue($event)" formControlName="diasemana">
+          <ion-option value="0" selected="true">Segunda</ion-option>
+          <ion-option value="1">Terça</ion-option>
+          <ion-option value="2">Quarta</ion-option>
+          <ion-option value="3">Quinta</ion-option>
+          <ion-option value="4">Sexta</ion-option>
+          <ion-option value="5">Sabado</ion-option>
+          <ion-option value="6">Domingo</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Qtd Séries:</ion-label>
+        <ion-select (ionChange)="checkValue($event)" formControlName="qtd_series">
+          <ion-option value="1" selected="true">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Qtd Repetições:</ion-label>
+        <ion-select (ionChange)="checkValue($event)" formControlName="qtd_rep">
+          <ion-option value="1">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="13">13</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</form> 

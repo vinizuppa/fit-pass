@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
- <form [formGroup]="formGroup" (ngSubmit)="teste(); $event.preventDefault()">
+ <form [formGroup]="formGroup" (ngSubmit)="submit(); $event.preventDefault()">
   <ion-input formControlName="instrutor" hidden="true" [value]="instrutor?.id" type="text"></ion-input>
 
   <ion-item>
@@ -45,49 +45,10 @@
     </ion-item>
   </ion-list>
 
-    <ion-card>
-      <ion-card-header>
-        Atividade 1
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list>
-          <ion-item>
-            <ion-label stacked>Atividade:</ion-label>
-            <ion-select>
-              <ion-option value="1" selected="true">Cerrote</ion-option>
-              <ion-option value="2">Rosca Direta</ion-option>
-              <ion-option value="3">Agachamento</ion-option>
-            </ion-select>
-          </ion-item>
+    <ion-card *ngFor="let n of elementos">
+      <page-itens-script [valor]="n" [itensScript]="itensScript">
+      </page-itens-script>  
 
-          <ion-item>
-            <ion-label stacked>Dia da Semana:</ion-label>
-            <ion-select>
-              <ion-option value="1" selected="true">Segunda</ion-option>
-              <ion-option value="2">Terça</ion-option>
-              <ion-option value="3">Quarta</ion-option>
-            </ion-select>
-          </ion-item>
-
-          <ion-item>
-            <ion-label stacked>Qtd Séries:</ion-label>
-            <ion-select>
-              <ion-option value="1" selected="true">1</ion-option>
-              <ion-option value="2">2</ion-option>
-              <ion-option value="3">3</ion-option>
-            </ion-select>
-          </ion-item>
-
-          <ion-item>
-            <ion-label stacked>Qtd Repetições:</ion-label>
-            <ion-select>
-              <ion-option value="1" selected="true">1</ion-option>
-              <ion-option value="2">2</ion-option>
-              <ion-option value="3">13</ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
     </ion-card>
     <!--O botão estará desabilitado se qualquer uma das validações falhar-->
     <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar Script</button>
