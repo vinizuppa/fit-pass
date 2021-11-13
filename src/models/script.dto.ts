@@ -1,6 +1,6 @@
 export interface ScriptDTO{
-    aluno:Aluno;
-    instrutor:Instrutor;
+    aluno:any;
+    instrutor:any;
     itens: any[];
     ativo: any;
 }

@@ -41,13 +41,13 @@ export class SignupPage {
     public instrutorService: InstrutorService,
     public alertCtrl: AlertController){
         this.formGroup = this.formBuilder.group({
-          nome: ['Vinicius Cordeiro Zuppa', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
+          nome: ['Diego Perez', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
           email: ['vcordeiro12@bol.com', [Validators.required, Validators.email]],
           cpf: ['15213434037', [Validators.required]],
           biotipo: [1, [Validators.required]],
           data_nasc: ["2001/02/15", [Validators.required]],
           sexo: ['M', [Validators.required]],
-          senha: ['senhateste', [Validators.required]],
+          senha: ['senha', [Validators.required]],
           peso: [78.85, [Validators.required]],
           altura: [1.88, [Validators.required]],
           imc:[100, [Validators.required]],
