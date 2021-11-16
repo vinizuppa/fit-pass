@@ -20,7 +20,7 @@ export class HomePage {
   constructor(
     public navCtrl: NavController, 
     public menu: MenuController,
-    public auth: AuthService) {
+    public auth: AuthService,) {
    
   }
 
@@ -33,6 +33,7 @@ export class HomePage {
     .subscribe(response => {
       this.auth.successfulLogin(response.headers.get('Authorization'));
       this.navCtrl.setRoot('AtividadesPage')
+
     },
     error => {});  
   }
@@ -46,8 +47,10 @@ export class HomePage {
       error => {});   
   }
 
+
   signup(){
     this.navCtrl.push('SignupPage');
+    
   }
 
   

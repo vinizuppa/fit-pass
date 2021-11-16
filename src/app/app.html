@@ -6,7 +6,17 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
+    <ion-list *ngIf="alunoA">
+      <button menuClose ion-item *ngFor="let pa of pagesA" (click)="openPage(pa)">
+        {{pa.title}}
+      </button>
+    </ion-list>
+    <ion-list *ngIf="instrutorA">
+      <button menuClose ion-item *ngFor="let pi of pagesI" (click)="openPage(pi)">
+        {{pi.title}}
+      </button>
+    </ion-list>
+    <ion-list *ngIf="indefinidoA">
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
