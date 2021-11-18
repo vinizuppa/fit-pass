@@ -75,7 +75,7 @@ export class NovoScriptPage {
 
   submit() {
     const loader = this.loadingCtrl.create({
-      content: "Please wait...",
+      content: "Um momento",
       duration: 3000
     });
     console.log(this.itensScript);

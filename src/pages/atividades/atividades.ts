@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { LoadingController, Nav, Platform } from 'ionic-angular';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { API_CONFIG } from '../../config/api.config';
@@ -47,12 +47,18 @@ export class AtividadesPage {
     public instrutorService: InstrutorService,
     public auth: AuthService,
     public usuarioService: UsuarioService,
-    public teste:  MyApp) {  
+    public teste:  MyApp,
+    public loadingCtrl: LoadingController) {  
   }
 
   ionViewDidLoad() {//Evento que executa o que estiver dentro, assim que a página terminar de ser carregada
+    const loader = this.loadingCtrl.create({
+      content: "Carregando...",
+      duration: 200
+    });
     this.atividadeService.findAll()
     .subscribe(response => {//Usamos arrow function
+      loader.present();
       this.items = response;
       this.loadImageUrls();
       this.teste.loadData();

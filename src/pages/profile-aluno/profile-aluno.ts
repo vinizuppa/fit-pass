@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 import { AlunoDTO } from '../../models/aluno.dto';
 import { InstrutorDTO } from '../../models/instrutor.dto';
@@ -41,11 +41,18 @@ export class ProfileAlunoPage {
     public alunoService: AlunoService,
     public instrutorService: InstrutorService,
     public usuarioService: UsuarioService,
-    public camera: Camera) {
+    public camera: Camera,
+    public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
+    const loader = this.loadingCtrl.create({
+      content: "Carregando...",
+      duration: 200
+    });
+    loader.present();
     this.loadData();
+   
   }
 
   loadData(){
