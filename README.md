@@ -1,5 +1,5 @@
 # Passo a passo para instalação das dependencias:
- - Realizar download do node 12.13: https://nodejs.org/en/blog/release/v12.13.0/
+ - Realizar download do node 14: https://nodejs.org/download/release/v14.18.3/node-v14.18.3-x64.msi
  - Executar comandos:
 	 - npm install npm -g
 	 - npm install -g ionic@3.19.0 cordova@7.1.0
