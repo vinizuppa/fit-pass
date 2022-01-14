@@ -8,3 +8,4 @@
 	 - ionic cordova platform add browser --save
 	 - ionic cordova plugin add cordova-plugin-camera
 	 - npm install
+	- Rodar aplicação: ionic cordova run browser
