@@ -1,3 +1,4 @@
+# Projeto desenvolvido com finalidade para Tcc na faculdade. Se trata de um aplicativo, de matricula e acompanhamento de alunos em academias(ideia parecida com o gympass).
 # Passo a passo para instalação das dependencias:
  - Realizar download do node 14: https://nodejs.org/download/release/v14.18.3/node-v14.18.3-x64.msi
  - Executar comandos:
